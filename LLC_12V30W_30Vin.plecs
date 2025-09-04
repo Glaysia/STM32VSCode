@@ -21,15 +21,15 @@ Plecs {
   StiffnessDetectionMsg "2"
   MaxConsecutiveZCs "1000"
   AssertionAction "1"
-  InitializationCommands "%% Electrical\n\nV_DC = 30;\t\t     %[V]\nn_prim = 5"
-";\nn_sndry = 2;\n\n%Primary Side\nL_r = 47e-6;\t\t\t  %[H]\nL_m = 235e-6;\t\t"
-"  %[H]\nC_r = 29e-9;\t\t\t  %[F]\n\n%Secondary Side\nC_o = 560e-6;\t\t  %[F]"
-"\nC_v_init = 0;\t\t  %[V]\nR_o = 4.8;\t\t\t  %[Ohm]\nESR = 30e-3;\t\t     %[O"
-"hm]\n\nV_out_desired = 12; %[V]\n\n%% Controller\n\nR1 = 19.7e3;\nR2 = R1/3;"
+  InitializationCommands "%% Electrical\n\nV_DC = 30;\t\t     %[V]\nn_prim = 1"
+"5;\nn_sndry = 18;\n\n%Primary Side\nL_r = 59e-6;\t\t\t  %[H]\nL_m = 281e-6;\t"
+"\t  %[H]\nC_r = 27e-9;\t\t\t  %[F]\n\n%Secondary Side\nC_o = 560e-6;\t\t  %[F"
+"]\nC_v_init = 0;\t\t  %[V]\nR_o = 4.8;\t\t\t  %[Ohm]\nESR = 30e-3;\t\t     %["
+"Ohm]\n\nV_out_desired = 12; %[V]\n\n%% Controller\n\nR1 = 19.7e3;\nR2 = R1/3;"
 "\n\nV_ref = V_out_desired * R2 / (R1 + R2); % reference voltage\n\n%% Type 2 "
 "Compensator\nType2.wz1 = 2*pi*4.2e3; % frequency of type2 zero\nType2.wp0 = 3"
 ".2e3; % DC gain of type 2 compensator\nType2.wp1 = 2*pi*8.2e3; % frequency of"
-" type2 pole\n\nfreq = 97e3\n"
+" type2 pole\n\nfreq = 119e3\n"
   InitialState  "1"
   SystemState   ""
   CodeGenParameterInlining "2"
@@ -46,7 +46,7 @@ Plecs {
   MatrixSignificanceCheck "2"
   ExternalModeSettings ""
   Schematic {
-    Location      [199, 1618; 1478, 2278]
+    Location      [105, 1551; 1384, 2209]
     ZoomFactor    1.33333
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -68,7 +68,7 @@ Plecs {
       Type          Capacitor
       Name          "C2"
       Show          off
-      Position      [550, 150]
+      Position      [615, 150]
       Direction     up
       Flipped       off
       Parameter {
@@ -86,8 +86,8 @@ Plecs {
       Type          Diode
       Name          "D1"
       Show          off
-      Position      [490, 90]
-      Direction     left
+      Position      [490, 75]
+      Direction     down
       Flipped       off
       Parameter {
         Variable      "Vf"
@@ -111,44 +111,11 @@ Plecs {
       }
     }
     Component {
-      Type          Transformer
-      Name          "Tr3"
-      Show          off
-      Position      [450, 135]
-      Direction     right
-      Flipped       on
-      Parameter {
-        Variable      "Windings"
-        Value         "[1 2]"
-        Show          off
-      }
-      Parameter {
-        Variable      "n"
-        Value         "[n_prim n_sndry n_sndry]"
-        Show          off
-      }
-      Parameter {
-        Variable      "Polarity"
-        Value         "+"
-        Show          off
-      }
-      Parameter {
-        Variable      "Lm"
-        Value         "inf"
-        Show          off
-      }
-      Parameter {
-        Variable      "im0"
-        Value         "0"
-        Show          off
-      }
-    }
-    Component {
       Type          Diode
       Name          "D2"
       Show          off
-      Position      [490, 170]
-      Direction     left
+      Position      [540, 75]
+      Direction     down
       Flipped       off
       Parameter {
         Variable      "Vf"
@@ -229,7 +196,7 @@ Plecs {
       Type          Resistor
       Name          "R1"
       Show          off
-      Position      [615, 130]
+      Position      [680, 130]
       Direction     up
       Flipped       off
       Parameter {
@@ -242,7 +209,7 @@ Plecs {
       Type          Voltmeter
       Name          "Vm3"
       Show          off
-      Position      [675, 130]
+      Position      [740, 130]
       Direction     up
       Flipped       off
     }
@@ -250,7 +217,7 @@ Plecs {
       Type          Gain
       Name          "Gain2"
       Show          off
-      Position      [705, 170]
+      Position      [770, 170]
       Direction     up
       Flipped       on
       Parameter {
@@ -324,7 +291,7 @@ Plecs {
       Type          Resistor
       Name          "R2"
       Show          off
-      Position      [550, 115]
+      Position      [615, 115]
       Direction     up
       Flipped       off
       Parameter {
@@ -337,7 +304,7 @@ Plecs {
       Type          Ammeter
       Name          "Am1"
       Show          off
-      Position      [580, 90]
+      Position      [645, 90]
       Direction     left
       Flipped       off
     }
@@ -348,19 +315,19 @@ Plecs {
       Position      [800, 50]
       Direction     up
       Flipped       off
-      Location      [336, 699; 1252, 1365]
-      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAC0AAAB0PwCAAAAA/sAAAAQAFoAbwBvA"
-"G0AQQByAGUAYQAAAAAA/////wAAADEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
-"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMBAAAANQAAAdAAAABjAP///wAAAAMAAAOUAAAApfw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAA5QAAABEAP///wAAAtoAAAHQAAAA"
+      Location      [337, 699; 1252, 1439]
+      State         "AAAA/wAAAAD9AAAAAgAAAAEAAAC0AAACGvwCAAAAA/sAAAAQAFoAbwBvA"
+"G0AQQByAGUAYQAAAAAA/////wAAAIEA////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
+"///wAAAGMA////+wAAAAwAVAByAGEAYwBlAHMBAAAANQAAAhoAAABjAP///wAAAAMAAAOTAAAApfw"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQBAAAAAAAAA5MAAABEAP///wAAAtkAAAIaAAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
       HeaderState   "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAL+AMAAAAHAAAAB"
-"AAAAGQAAAADAAAAZAAAAAkAAABkAAAACAAAAGQAAAAHAAAAZAAAAAYAAABkAAAABQAAAGQAAAOGAA"
-"AACwEAAAEAAAAAAAAAAAAAAABk/////wAAAIEAAAAAAAAACwAAAFsAAAABAAAAAAAAAGQAAAABAAA"
+"AAAAGQAAAADAAAAZAAAAAkAAABkAAAACAAAAGQAAAAHAAAAZAAAAAYAAABkAAAABQAAAGQAAAOTAA"
+"AACwEAAAEAAAAAAAAAAAAAAABk/////wAAAIEAAAAAAAAACwAAAIUAAAABAAAAAAAAAGQAAAABAAA"
 "AAAAAAGQAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAB"
-"AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAmMAAAABAAAAAAAAA+gA"
+"AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAkYAAAABAAAAAAAAA+gA"
       PlotPalettes  "AAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA"
 "AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 "=="
@@ -691,6 +658,95 @@ Plecs {
       Direction     left
       Flipped       off
     }
+    Component {
+      Type          Transformer
+      Name          "Tr2"
+      Show          on
+      Position      [450, 135]
+      Direction     right
+      Flipped       on
+      Parameter {
+        Variable      "Windings"
+        Value         "[1 1]"
+        Show          off
+      }
+      Parameter {
+        Variable      "n"
+        Value         "[n_prim n_sndry]"
+        Show          off
+      }
+      Parameter {
+        Variable      "Polarity"
+        Value         "+"
+        Show          off
+      }
+      Parameter {
+        Variable      "Lm"
+        Value         "inf"
+        Show          off
+      }
+      Parameter {
+        Variable      "im0"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Diode
+      Name          "D3"
+      Show          off
+      Position      [490, 165]
+      Direction     down
+      Flipped       off
+      Parameter {
+        Variable      "Vf"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Diode
+      Name          "D4"
+      Show          off
+      Position      [540, 165]
+      Direction     down
+      Flipped       off
+      Parameter {
+        Variable      "Vf"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "Ron"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "thermal"
+        Value         ""
+        Show          off
+      }
+      Parameter {
+        Variable      "T_init"
+        Value         "0"
+        Show          off
+      }
+    }
     Connection {
       Type          Wire
       SrcComponent  "L2"
@@ -717,76 +773,38 @@ Plecs {
       }
       Branch {
         Points        [440, 170]
-        DstComponent  "Tr3"
+        DstComponent  "Tr2"
         DstTerminal   2
       }
     }
     Connection {
       Type          Wire
-      SrcComponent  "Tr3"
-      SrcTerminal   4
-      Points        [460, 130]
+      SrcComponent  "Vm3"
+      SrcTerminal   2
+      Points        [740, 170; 680, 170]
       Branch {
-        Points        [525, 130; 525, 170; 550, 170]
-        Branch {
-          Points        [615, 170]
-          Branch {
-            Points        [675, 170]
-            DstComponent  "Vm3"
-            DstTerminal   2
-          }
-          Branch {
-            DstComponent  "R1"
-            DstTerminal   2
-          }
-        }
+        Points        [615, 170]
         Branch {
           DstComponent  "C2"
           DstTerminal   2
         }
-      }
-      Branch {
-        DstComponent  "Tr3"
-        DstTerminal   5
-      }
-    }
-    Connection {
-      Type          Wire
-      SrcComponent  "D1"
-      SrcTerminal   1
-      Points        [460, 90]
-      DstComponent  "Tr3"
-      DstTerminal   3
-    }
-    Connection {
-      Type          Wire
-      SrcComponent  "D1"
-      SrcTerminal   2
-      Points        [515, 90]
-      Branch {
-        Points        [550, 90]
         Branch {
-          DstComponent  "Am1"
-          DstTerminal   1
-        }
-        Branch {
-          DstComponent  "R2"
-          DstTerminal   1
+          Points        [615, 185; 540, 185]
+          Branch {
+            DstComponent  "D4"
+            DstTerminal   1
+          }
+          Branch {
+            Points        [490, 185]
+            DstComponent  "D3"
+            DstTerminal   1
+          }
         }
       }
       Branch {
-        Points        [515, 170]
-        DstComponent  "D2"
+        DstComponent  "R1"
         DstTerminal   2
       }
-    }
-    Connection {
-      Type          Wire
-      SrcComponent  "D2"
-      SrcTerminal   1
-      Points        [460, 170]
-      DstComponent  "Tr3"
-      DstTerminal   6
     }
     Connection {
       Type          Wire
@@ -804,7 +822,7 @@ Plecs {
     }
     Connection {
       Type          Wire
-      SrcComponent  "Tr3"
+      SrcComponent  "Tr2"
       SrcTerminal   1
       Points        [440, 90; 410, 90]
       Branch {
@@ -820,13 +838,13 @@ Plecs {
       Type          Signal
       SrcComponent  "Vm3"
       SrcTerminal   3
-      Points        [705, 130]
+      Points        [770, 130]
       Branch {
         DstComponent  "Gain2"
         DstTerminal   1
       }
       Branch {
-        Points        [705, 80; 745, 80; 745, 60]
+        Points        [770, 80; 745, 80; 745, 60]
         DstComponent  "Scope"
         DstTerminal   3
       }
@@ -880,9 +898,9 @@ Plecs {
       Type          Wire
       SrcComponent  "R1"
       SrcTerminal   1
-      Points        [615, 90]
+      Points        [680, 90]
       Branch {
-        Points        [675, 90]
+        Points        [740, 90]
         DstComponent  "Vm3"
         DstTerminal   1
       }
@@ -895,7 +913,7 @@ Plecs {
       Type          Signal
       SrcComponent  "Am1"
       SrcTerminal   3
-      Points        [580, 50]
+      Points        [645, 50]
       DstComponent  "Scope"
       DstTerminal   2
     }
@@ -937,9 +955,59 @@ Plecs {
       DstComponent  "Scope2"
       DstTerminal   2
     }
+    Connection {
+      Type          Wire
+      SrcComponent  "D1"
+      SrcTerminal   1
+      Points        [490, 115]
+      Branch {
+        DstComponent  "D3"
+        DstTerminal   2
+      }
+      Branch {
+        DstComponent  "Tr2"
+        DstTerminal   3
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "D4"
+      SrcTerminal   2
+      Points        [540, 145]
+      Branch {
+        DstComponent  "D2"
+        DstTerminal   1
+      }
+      Branch {
+        DstComponent  "Tr2"
+        DstTerminal   4
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Am1"
+      SrcTerminal   1
+      Points        [615, 90]
+      Branch {
+        DstComponent  "R2"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [615, 45; 540, 45]
+        Branch {
+          Points        [490, 45]
+          DstComponent  "D1"
+          DstTerminal   2
+        }
+        Branch {
+          DstComponent  "D2"
+          DstTerminal   2
+        }
+      }
+    }
     Annotation {
       Name          "Half-bridge LLC converter with Analysis Tools"
-      Position      [455, 30]
+      Position      [455, 15]
     } 
   }
   Analysis {
@@ -963,4 +1031,4 @@ Plecs {
     Response      "v_loop/Response"
   }
 }
-DemoSignature "Gyx0tj4YlWrGw577MxGVHj6eMpoUOnPCgY8gfGu2QzU="
+DemoSignature "nAzO+Q6FIAxYXLvs+/XEEccOXyoJcSdCm4rzxofR9fU="
